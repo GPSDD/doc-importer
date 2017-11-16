@@ -1,0 +1,12 @@
+writter:
+  extends:
+    file: writter/docker-compose-develop.yml
+    service: develop
+executor:
+  extends:
+    file: executor/docker-compose-develop.yml
+    service: develop
+orchestrator:
+  extends:
+    file: orchestrator/docker-compose-develop.yml
+    service: develop
