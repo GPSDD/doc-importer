@@ -1,4 +1,4 @@
-writter:
+writer:
   extends:
     file: writer/docker-compose-develop.yml
     service: develop
@@ -12,4 +12,3 @@ orchestrator:
     service: develop
 activemq:
   image: webcenter/activemq
-
