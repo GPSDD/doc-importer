@@ -1,15 +1,17 @@
 #!/bin/bash
 
 case "$1" in
-    test-e2e)
-        npm run test-e2e
+    pull-sub)
+        (cd executor && git pull origin $2)
+        (cd orchestrator && git pull origin $2)
+        (cd writter && git pull origin $2)
         ;;
-    test-unit)
-        npm run test-unit
+    co-sub)
+        (cd executor && git checkout $2)
+        (cd orchestrator && git checkout $2)
+        (cd writter && git checkout $2)
         ;;
-    start)
-        npm start
-        ;;
+
     develop)
         type docker-compose >/dev/null 2>&1 || { echo >&2 "docker-compose is required but it's not installed.  Aborting."; exit 1; }
         docker-compose -f docker-compose-develop.yml build && docker-compose -f docker-compose-develop.yml up
