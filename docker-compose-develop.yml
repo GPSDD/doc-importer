@@ -7,6 +7,7 @@ writer:
     - elastic
   environment:
     RABBITMQ_URL: "amqp://user:password@rabbitmq:5672"
+    ELASTIC_URL: "http://elastic:9200"
 executor:
   extends:
     file: executor/docker-compose-develop.yml
