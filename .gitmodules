@@ -4,6 +4,6 @@
 [submodule "orchestrator"]
 	path = orchestrator
 	url = git@github.com:Skydipper/doc-orchestrator.git
-[submodule "writter"]
-	path = writter
-	url = git@github.com:Skydipper/doc-writter.git
+[submodule "writer"]
+	path = writer
+	url = git@github.com:Skydipper/doc-writer.git

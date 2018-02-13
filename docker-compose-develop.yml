@@ -1,12 +1,54 @@
-writter:
+writer:
   extends:
-    file: writter/docker-compose-develop.yml
+    file: writer/docker-compose-develop.yml
     service: develop
+  links:
+    - rabbitmq
+    - elastic
+  environment:
+    RABBITMQ_URL: "amqp://user:password@rabbitmq:5672"
+    ELASTIC_URL: "http://elastic:9200"
 executor:
   extends:
     file: executor/docker-compose-develop.yml
     service: develop
+  links:
+    - rabbitmq
+    - elastic
+  environment:
+    RABBITMQ_URL: "amqp://user:password@rabbitmq:5672"
+    ELASTIC_URL: "http://elastic:9200"
 orchestrator:
   extends:
     file: orchestrator/docker-compose-develop.yml
     service: develop
+  links:
+    - rabbitmq
+    - mongo
+  environment:
+    RABBITMQ_URL: "amqp://user:password@rabbitmq:5672"
+rabbitmq:
+  image: rabbitmq:3.6-management
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+  environment:
+    RABBITMQ_DEFAULT_USER: user
+    RABBITMQ_DEFAULT_PASS: password
+  restart: always
+  hostname: myrabbit
+elastic:
+  image: vizzuality/elasticsearch-sql:5.1.1
+  ports:
+    - "9200:9200"
+    - "9300"
+
+  restart: always
+mongo:
+  image: mongo:3.4
+  command: --smallfiles
+  ports:
+    - "27017"
+  volumes:
+    - $HOME/docker/data/doc-importer-mongo:/data/db
+  restart: always
