@@ -1,9 +1,9 @@
 [submodule "executor"]
 	path = executor
-	url = git@github.com:resource-watch/doc-executor.git
+	url = git@github.com:Skydipper/doc-executor.git
 [submodule "orchestrator"]
 	path = orchestrator
-	url = git@github.com:resource-watch/doc-orchestrator.git
+	url = git@github.com:Skydipper/doc-orchestrator.git
 [submodule "writer"]
 	path = writer
-	url = git@github.com:resource-watch/doc-writer.git
+	url = git@github.com:Skydipper/doc-writer.git
